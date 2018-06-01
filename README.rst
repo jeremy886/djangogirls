@@ -1,3 +1,5 @@
+* Link to `Django Girls Tutorial <https://tutorial.djangogirls.org/en/>`_
+
 v1.01
 =====
 
@@ -19,6 +21,14 @@ Upgrade:
 * python manage.py createsuperuser
     - username: jeremy
     - password: AiFee2oo
+* web: http://127.0.0.1:8000/blog/
 
+
+v1.02
+=====
+
+* pip install django-debug-toolbar
+* adjust settings and urlpatterns
+* remap url for login and logout redirecting pages
 
 

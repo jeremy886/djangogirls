@@ -119,7 +119,25 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/blog/'
+
+#######################
+# django-debug-toolbar
+if DEBUG:
+    INTERNAL_IP = ['127.0.0.1', '::1', 'localhost']
+    MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware']
+    INSTALLED_APPS += ['debug_toolbar']
+    SHOW_TOOLBAR_CALLBACK = True
+
+
+def custom_show_toolbar(request):
+    return True # Always show toolbar, for example purposes only.
+
+
+DEBUG_TOOLBAR_CONFIG = {
+    'SHOW_TOOLBAR_CALLBACK': custom_show_toolbar,
+}
+########################

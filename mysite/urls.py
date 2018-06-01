@@ -16,10 +16,18 @@ Including another URLconf
 from django.urls import re_path, include
 from django.contrib import admin
 from django.contrib.auth import views
+from django.conf import settings
 
 urlpatterns = [
     re_path(r'^admin/', admin.site.urls),
     re_path(r'^accounts/login/$', views.login, name='login'),
-    re_path(r'^accounts/logout/$', views.logout, name='logout', kwargs={'next_page': '/'}),
+    re_path(r'^accounts/logout/$', views.logout, name='logout', kwargs={'next_page': '/blog/'}),
     re_path(r'^blog/', include('blog.urls')),
 ]
+
+
+if settings.DEBUG:
+    import debug_toolbar
+
+    urlpatterns += [re_path(r'^__debug__/', include(debug_toolbar.urls))]
+
