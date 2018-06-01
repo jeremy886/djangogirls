@@ -21,12 +21,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-SECRET_KEY = open(os.path.expanduser('~/.djangogirls-secret')).read().strip()
+# SECRET_KEY = open(os.path.expanduser('~/.djangogirls-secret')).read().strip()
+SECRET_KEY = '#*k74p%!c5sldkfjskwerere#6w*h-udcmmbgzr(u2$fgsdfgfd'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'blog.alkira.school']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 
 # Application definition
