@@ -22,4 +22,4 @@ is copyrighted by Markus Zapke-Gründemann et al.
 
 ## Author(s) of derivative work
 
-- Jeremy Chen (Starting v1.0)
+- Jeremy Chen (Starting v1.0 in this repository)
