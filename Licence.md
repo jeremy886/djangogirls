@@ -1,4 +1,4 @@
-Code here is taken from DjangoGirls Tutorial. The licensing and credit as below:
+Code here is taken from [DjangoGirls Tutorial](https://tutorial.djangogirls.org/en/). The licensing and credit as below:
 
 # License
 
