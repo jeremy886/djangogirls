@@ -1,0 +1,18 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+  <div class="card">
+    <div class="card-header">
+      The author ({{ object_list.0.author.first_name }} {{ object_list.0.author.last_name }}) has written:
+    </div>
+    <ul class="list-group list-group-flush">
+    {% for post in object_list %}
+      <a href="{% url 'blog:post_detail' pk=post.pk %}">
+        <li class="list-group-item">{{ post.title }}</li>
+      </a>
+    {% empty %}
+        nothing
+    {% endfor %}
+    </ul>
+  </div>
+{% endblock content %}

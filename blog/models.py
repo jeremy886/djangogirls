@@ -1,7 +1,10 @@
 from django.db import models
 from django.utils import timezone
 
+
 # Create your models here.
+# class Category(models.Model):
+#     tag = models.CharField(max_length=100)
 
 class Post(models.Model):
     author = models.ForeignKey('auth.User', on_delete=models.CASCADE, null=True, blank=True)
@@ -16,3 +19,5 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+

@@ -37,3 +37,11 @@ v1.03
 
 * Upgrade Bootstrap from 3 to 4.1
 * Change glyphicon to fontawesome
+
+v1.04
+=====
+
+* Add user: justin password: AiFee2oo
+* Add some posts (in the database)
+* List user posts by title (Use CBV now)
+
