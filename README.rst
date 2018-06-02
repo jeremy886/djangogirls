@@ -32,3 +32,6 @@ v1.02
 * remap url for login and logout redirecting pages
 
 
+v.103
+
+* Upgrade Bootstrap from 3 to 4.1
