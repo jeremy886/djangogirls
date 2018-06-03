@@ -4,6 +4,7 @@ from . import models
 from .forms import PostForm
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
+from django.http import Http404
 # CBV below
 from django.views.generic import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -91,7 +92,24 @@ class ListUserPost(LoginRequiredMixin, ListView):
     template_name = "blog/user_post_list.html"
 
     def get_queryset(self):
+        """
+        Without select_related or prefetch related:
+            7 SQL queries, takes 3.99 ms
+        With prefetch_related
+            8 SQL queries, takes 0.5 ms
+        With select_related
+            5 SQL queries, takes 15.66 ms
+
+        Not very sure if it is necessary to use these techniques.
+        """
         username = self.kwargs.get("username")
+        # try:
+        #     posts = models.Post.objects.select_related('author').filter(author__username=username)
+        # except models.Post.DoesNotExist:
+        #     raise Http404
+        # else:
+        #     return posts
+
         posts = models.Post.objects.filter(author__username=username)
         return posts
 

@@ -62,5 +62,8 @@ v1.06
 * add word count to post
 * count and display user post count
 
+v1.07
+=====
 
+* explore select_related, prefetch_related
 
