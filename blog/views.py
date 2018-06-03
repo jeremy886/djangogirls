@@ -3,6 +3,7 @@ from django.utils import timezone
 from . import models
 from .forms import PostForm
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 # CBV below
 from django.views.generic import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -10,13 +11,28 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
 
 def post_list(request):
-    posts = models.Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    posts = models.Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
     return render(request, 'blog/post_list.html', {'posts': posts})
+
+
+class SearchView(ListView):
+    template_name = "blog/post_list.html"
+    context_object_name = "posts"
+
+    def get_queryset(self):
+        search_term = self.request.GET.get("term")
+        posts = models.Post.objects.filter(
+            Q(published_date__lte=timezone.now()),
+            Q(title__icontains=search_term) | Q(text__icontains=search_term)
+        ).order_by('-published_date')
+        return posts
+
 
 @login_required
 def post_draft_list(request):
     posts = models.Post.objects.filter(published_date__isnull=True).order_by('created_date')
     return render(request, 'blog/post_draft_list.html', {'posts': posts})
+
 
 @login_required
 def post_publish(request, pk):
@@ -24,9 +40,11 @@ def post_publish(request, pk):
     post.publish()
     return redirect('blog:post_detail', pk=pk)
 
+
 def post_detail(request, pk):
     post = get_object_or_404(models.Post, pk=pk)
     return render(request, 'blog/post_detail.html', {'post': post})
+
 
 @login_required
 def post_new(request):
@@ -42,6 +60,7 @@ def post_new(request):
         form = PostForm()
     return render(request, 'blog/post_edit.html', {'form': form})
 
+
 @login_required
 def post_edit(request, pk):
     post = get_object_or_404(models.Post, pk=pk)
@@ -56,6 +75,7 @@ def post_edit(request, pk):
     else:
         form = PostForm(instance=post)
     return render(request, 'blog/post_edit.html', {'form': form})
+
 
 @login_required
 def post_remove(request, pk):

@@ -45,3 +45,13 @@ v1.04
 * Add some posts (in the database)
 * List user posts by title (Use CBV now)
 
+v1.05
+=====
+
+* Add two users justin and james to create more post entries (password: AiFee2oo)
+* List posts in descending order of the published datetime
+* Add Post View Counter (POST.viewed)
+* python manage.py makemigrations && python manage.py migrate
+* A custom.py to run custom commands without using the browser (F expressions)
+* Add Search functionality on the top menu
+* Use Q objects to use OR logic to search two terms

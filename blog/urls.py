@@ -13,4 +13,5 @@ urlpatterns = [
     re_path(r'^post/(?P<pk>\d+)/publish/$', views.post_publish, name='post_publish'),
     re_path(r'^post/(?P<pk>\d+)/remove/$', views.post_remove, name='post_remove'),
     path('by/<username>', views.ListUserPost.as_view(), name='user_post'),
+    path('search', views.SearchView.as_view(), name='search'),
 ]
