@@ -55,3 +55,12 @@ v1.05
 * A custom.py to run custom commands without using the browser (F expressions)
 * Add Search functionality on the top menu
 * Use Q objects to use OR logic to search two terms
+
+v1.06
+=====
+
+* add word count to post
+* count and display user post count
+
+
+

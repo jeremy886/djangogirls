@@ -5,7 +5,7 @@
         <div class="post">
             <h1><a href="{%  url 'blog:post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
             <div class="date">
-                <p>Published: {{ post.published_date }}</p>
+                <p>Published: {{ post.published_date }} Word Count ({{ post.text|wordcount }})</p>
             </div>
 
             <p>{{ post.text|linebreaksbr }}</p>

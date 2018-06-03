@@ -94,3 +94,6 @@ class ListUserPost(LoginRequiredMixin, ListView):
         username = self.kwargs.get("username")
         posts = models.Post.objects.filter(author__username=username)
         return posts
+
+
+
